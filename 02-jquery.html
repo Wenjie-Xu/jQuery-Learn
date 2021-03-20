@@ -6,14 +6,31 @@
     <script src="./jQuery/jquery-3.6.0.js"></script>
 </head>
 <body>
-    <div id="book"></div>
+    <div id="book">ahkjsdhfkahsdlfkjh</div>
+    <h2>jQuery初学</h2>
+    <ul>
+        <li>1、ready()等待DOM加载完毕后触发</li>
+        <li>2、onload()页面的一切加载完成后触发</li>
+    </ul>
 </body>
 <footer>
-<!--自己的script一定要写在引入jquery的后面-->
-<script type="text/javascript">
-    //获取book元素
-    var book_div = document.querySelector("#book");
-    console.log(book_div);
-</script>
+    <!--自己的script一定要写在引入jquery的后面-->
+    <script>
+        //ready()的作用就是等待网页全部加载完成
+        $(document).ready(function(){
+            //获取book元素(原生DOM)
+            var book_div = document.querySelector("#book");
+            //jQueryDOM
+            var $book_div = $("#book");
+            $book_div.css("background-color","green");
+
+            //原生的DOM转为jQueryDOM
+            $(book_div).css("background-color","yellow");
+
+            //jQueryDOM转为原生的DOM（本质由原生DOM对象组成的集合）
+            $book_div[0].style.backgroundColor="green";
+            console.log($book_div[0]);
+        })
+    </script>
 </footer>
 </html>
