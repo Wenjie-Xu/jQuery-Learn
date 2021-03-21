@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery层级选择器</title>
+</head>
+<body>
+    <body>
+        <h1>基本选择器</h1>
+        <hr>
+        <ul id="firstList">
+            <li class="item">jquery选择器没有css选择器优先级的概念</li>
+            <li id = "li1">asdfasdfa</li>
+            <li>asdfasdfa</li>
+        </ul>
+        <hr>
+        <ul id="secondList">
+            <li class="item">sdfgsdfg
+                <ul id="thirdList">
+                    <li class="item">sdfgsdfg</li>
+                    <li>fsghdfgh</li>
+                </ul>
+            </li>
+            <li>fsghdfgh</li>
+        </ul>
+    </body>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        // 标签下的所有子元素
+        $("ul li").css("border","2px solid blue");
+        // 标签下第一级所有元素
+        $("ul#secondList>li").css("border","2px solid blue");
+        // 紧邻同级元素选择器
+        $("#li1+li").css("border","2px solid yellow");
+        // 后面所有同级元素选择器
+        $("#li1~li").css("border","2px solid yellow");
+    </script>
+</footer>
+</html>
