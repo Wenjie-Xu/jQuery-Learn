@@ -30,14 +30,16 @@
 <footer>
     <script src="./jQuery/jquery-3.6.0.js"></script>
     <script type="text/javascript">
-        // 标签下的所有子元素
-        $("ul li").css("border","2px solid blue");
-        // 标签下第一级所有元素
-        $("ul#secondList>li").css("border","2px solid blue");
-        // 紧邻同级元素选择器
-        $("#li1+li").css("border","2px solid yellow");
-        // 后面所有同级元素选择器
-        $("#li1~li").css("border","2px solid yellow");
+        $("document").ready(function(){
+            // 标签下的所有子元素
+            $("ul li").css("border","2px solid blue");
+            // 标签下第一级所有元素
+            $("ul#secondList>li").css("border","2px solid blue");
+            // 紧邻同级元素选择器
+            $("#li1+li").css("border","2px solid yellow");
+            // 后面所有同级元素选择器
+            $("#li1~li").css("border","2px solid yellow");
+        )}
     </script>
 </footer>
 </html>

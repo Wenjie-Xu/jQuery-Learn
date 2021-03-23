@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery内容选择器</title>
+</head>
+<body>
+    <body>
+        <h1>内容选择器</h1>
+        <hr>
+        <ul id="firstList">
+            <li class="item">同志</li>
+            <li id = "li1"></li>
+            <li></li>
+        </ul>
+        <hr>
+        <ul id="secondList">
+            <li class="item">
+                <ul id="thirdList">
+                    <li class="item"></li>
+                    <li class="current"> </li>
+                    <li> </li>
+                    <li> </li>
+                </ul>
+            </li>
+            <li></li>
+        </ul>
+    </body>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function(){
+            // 内容选择器（包含），包含某个内容的li
+            $("li:contains('同志')").css("border","2px solid red");
+
+            // 包含class是current的后代元素的li
+            $("li:has(.current)").css("border","2px solid blue");
+
+            // 不能有内容，也没有子元素
+            $("#thirdList li:empty").css("border","2px solid green");
+
+            // 要么有内容，要么有子元素
+            $("#thirdList li:parent").css("border","2px solid blue");
+
+            // 可见性的元素选择器
+            $(":hidden").css("border","2px solid blue");
+            $(":visible").css("border","2px solid blue");
+        })
+    </script>
+</footer>
+</html>

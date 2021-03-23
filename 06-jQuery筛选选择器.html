@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery筛选选择器</title>
+</head>
+<body>
+    <body>
+        <h1>筛选选择器</h1>
+        <hr>
+        <ul id="firstList">
+            <li class="item">筛选选择器是jQuery特有的</li>
+            <li id = "li1">冒号前会找到一部分元素，冒号后进行筛选</li>
+            <li></li>
+        </ul>
+        <hr>
+        <ul id="secondList">
+            <li class="item">
+                <ul id="thirdList">
+                    <li class="item">gt 就是原先的 ></li>
+                    <li>lt 就是原先的 <</li>
+                    <li>:前面可以不加任何东西，等同于前面有个*</li>
+                    <li>$("*:first") = $("*:first")</li>
+                </ul>
+            </li>
+            <li></li>
+        </ul>
+        <!-- <input autofocus type="text"/> -->
+        <input type="text"/>
+        <input type="text"/>
+    </body>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function(){
+            //筛选选择器
+            $("#firstList li:first").css("border","2px solid blue");
+            $("#firstList li:eq(1)").css("border","2px solid pink");
+            $("#firstList li:last").css("border","2px solid green");
+
+            //&gt 就是原先的 >
+            $("#thirdList li:gt(1)").css("border","5px solid blue");
+            //&lt 就是原先的 <
+            $("#thirdList li:lt(1)").css("border","5px solid yellow");
+
+            //奇数行
+            $("#firstList li:odd").css("background", "#ccc");
+            //偶数行
+            $("#firstList li:even").css("background", "#369");
+
+            //排除选择器
+            $("#thirdList li:not(.item)").css("background", "#369")
+
+            //标题选择器
+            $(":header").css("color","red");
+
+            //正在获取焦点的元素
+            $(":focus").css("border","5px solid blue");
+
+            //过滤出根元素
+            $(":root").css("border","5px solid red");
+
+            //锚点指向的元素(具有id属性的)
+            $(":target").css("border","5px solid blue");
+        )}
+        </script>
+</footer>
+</html>
