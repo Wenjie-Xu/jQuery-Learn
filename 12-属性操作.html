@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQueryDOM对象的属性操作</title>
+    <style>
+        .img-list img {
+            border :2px solid #ccc;
+            border-radius: 50%;
+        }
+        .img-list img.current {
+            border :2px solid red;
+            border-radius: 50%;
+        }
+        #box {
+            border : 2px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-list">
+        <img src="./pic/1.png" alt="MyAvatar" title="hello" load="1.png">
+    </div>
+    <div id="box">
+        <p>
+            Lorem ipsum, dolor sit amet consectetur 
+            adipisicing elit. Assumenda, sint!
+        </p>
+    </div>
+
+    <input type="text" value="nihaoma">
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 查看属性的值
+            // attr操作所有属性，包括自定义和内置的/ prop操作DOM原始内置的属性
+            // 设置会全部设置、获取只会获取第一个元素的值
+            console.log($("img").attr("src"));
+            console.log($("img").prop("src"));
+
+            // 设置（添加）属性的值
+            // attr修改所有属性 / prop修改内置的属性
+            $("img").attr("title", "nihao");
+            $("img").prop("title", "wohao");
+            $("img").prop("width", "200");
+
+            // 删除属性（removeAttr）
+            $("img").removeAttr("load");
+            // 删除的是通过prop添加的非内置属性
+            $("img").removeProp("width");
+            
+            // DOM对象绑定事件(所有对象)
+            $(".img-list img").click(function(){
+                // $(this)表示当前点击的元素
+                if($(this).hasClass("current")){
+                    $(this).removeClass("current");
+                }else{
+                    // this是原生的js对象
+                    // 如果原先有某个类，那么会追加，不会全部覆盖
+                    $(this).addClass("current");
+                }
+
+            })
+
+            console.log($("#box").html());//等同于innerHtml，包含元素标签
+            console.log($("#box").text());//等同于innerText，不包含元素标签
+
+            $("#box").text("Hello World!");
+
+            // 获取表单的value
+            console.log($("input").val())
+            $("input").val("请输入内容");
+        })
+    </script>
+</footer>
+</html>
