@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery过滤操作</title>
+    <style>
+      .my-list {
+        width: 600px;
+        list-style: none;
+      }
+      .my-list li {
+          margin-bottom: 10px;
+          padding: 20px;
+          border : 2px dashed orange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>jQuery过滤操作</h1>
+    <ul class="my-list">
+      <li class="znn">张奶奶</li>
+      <li class="lnn">李奶奶<span class="item"></span></li>
+      <li>刘奶奶</li>
+      <li>赵奶奶</li>
+    </ul>
+  </body>
+  <footer>
+      <script src="./jQuery/jquery-3.6.0.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+            // 从jqueryDOM的集合中进行筛选，本质和jquery选择器的效果一样
+            $(".my-list li").first().css("border-color", "red");
+            $(".my-list li").last().css("border-color", "red");
+            // 第几个（从0计数）
+            $(".my-list li").eq(1).css("border-color", "blue");
+            // 排除选择器
+            $(".my-list li").not(".lnn").css("background-color", "#ccc");
+            // 筛选选择器
+            $(".my-list li").filter(".znn").css("background-color", "pink");
+            // 截取一段集合(左闭右开)
+            $(".my-list li").slice(1,3).css("background-color", "green");
+            // 包含子元素的选择器
+            $(".my-list li").has(".item").css("border", "5px solid purple");
+            
+        })
+      </script>
+  </footer>
+</html>
