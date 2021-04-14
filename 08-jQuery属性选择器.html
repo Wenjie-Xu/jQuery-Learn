@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery内容选择器</title>
+</head>
+<body>
+    <body>
+        <h1>内容选择器</h1>
+        <hr>
+        <ul id="firstList">
+            <li class="item">同志</li>
+            <li id = "li1"></li>
+            <li id ="6666" name="special">被挑选出来的组合元素</li>
+        </ul>
+        <hr>
+        <ul id="secondList">
+            <li class="item">
+                <ul id="thirdList">
+                    <li class="item"></li>
+                    <li class="current"> </li>
+                    <li name="hello_li">name属性结尾是li的元素</li>
+                    <li name="china">name属性中间数hin的元素</li>
+                </ul>
+            </li>
+            <li></li>
+        </ul>
+    </body>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $("document").ready(function(){
+            // 有id属性的ul元素
+            $("ul[id]").css("border", "2px solid blue");
+
+            // id属性是指定值的元素
+            $("ul[id='thirdList']").css("border", "2px solid green");
+
+            // id属性不是指定值得元素
+            $("ul[id!='thirdList']").css("border", "2px solid red");
+
+            // id属性是以xxx开头的元素
+            $("ul[id^='sec']").css("border","2px solid purple");
+
+            // name属性是以xxx结尾的元素
+            $("li[name$='li']").css("background","#ccc");
+
+            // name属性中间包含hin的元素
+            $("li[name*='hin']").css("background","#369");
+
+            // 任意多个属性组合选择器
+            $("li[id^='666'][name*='al']").css("background","yellow");
+        })
+    </script>
+</footer>
+</html>
