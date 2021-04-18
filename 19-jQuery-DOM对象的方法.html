@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQueryDOM对象的方法</title>
+    <style>
+        #myList {
+            list-style: none;
+            width: 600px;
+        }
+
+        #myList li {
+            margin-top: 10px;
+            padding: 20px;
+            border: 2px solid orange;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQueryDOM对象的方法</h1>
+    <hr>
+    <ul id="myList">
+        <li>张奶奶</li>
+        <li>王奶奶</li>
+        <li>刘奶奶</li>
+        <li>李奶奶</li>
+        <li>马奶奶</li>
+    </ul>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        // 遍历
+        $("#myList li").each(function(index, ele){
+            console.log(index, ele);
+            ele.innerHTML += "喜欢我";
+            $(ele).append(" 是不可能的");
+        })
+
+        // map,返回一个新集合
+        var newArray = $("#myList li").map(function(index, ele){
+            return ele.innerHTML;
+        });
+
+        // 集合的长度
+        console.log($("#myList li").length);
+
+        // 获取某个元素在父元素中的位置
+        console.log($("#myList li:eq(1)").index());
+
+        // 返回jqueryDOM的纯数组
+        console.log($("#myList li").get());
+
+        // $("#myList li")[1] = $("#myList li").get(1)
+
+        // 判断某个jqueryDOM是否满足条件
+        console.log($("#myList").is("#myList"));
+    </script>
+</footer>
+</html>
