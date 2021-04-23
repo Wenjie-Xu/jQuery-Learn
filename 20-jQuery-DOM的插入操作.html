@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-DOM的操作</title>
+    <style>
+        #box {
+            width: 600px;
+            font-size: 0px;
+            border: 2px solid orange;
+        }
+
+        #box img {
+            width: 200px;
+            height: 200px;
+            border: none;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 396px;
+            height: 396px;
+            border: 2px solid rgb(48, 155, 98);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>jQuery-DOM的操作</h1>
+    <!-- <img src="./pic/6.jpg" alt="" id="pic1"> -->
+    <hr>
+    <div id="box">
+        <img src="./pic/1.jpg" alt="">
+        <img src="./pic/2.jpg" alt="">
+        <img src="./pic/3.jpg" alt="">
+    </div>
+    <hr>
+    <div id="button1">
+        <button id="append">append</button>
+        <button id="appendTo">appendTo</button>
+        <button id="prepend">prepend</button>
+        <button id="prependTo">prependTo</button>
+    </div>
+    <div id="button2">
+        <button id="before">before</button>
+        <button id="insertBefore">insertBefore</button>
+        <button id="after">after</button>
+        <button id="insertAfter">insertAfter</button>
+    </div>
+</body>
+<fotter>
+    <script src='./jQuery/jquery-3.6.0.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            // 创建一个jQueryDOM
+            var $img = $("<img>");
+            $img.attr("src", "./pic/4.jpg");
+
+            // 创建一个jQueryDom--创建时并设定属性
+            $img1 = $("<img src='./pic/4.jpg'>");
+
+            // append（追加）
+            $("#append").click(function(){
+                $("#box").append($img);// 接收一个jQueryDOM
+                $("#box").append("<img src='./pic/5.jpg'> alt=''");// append和$()一样可以接收字符串，直接创建jQueryDom，但是不能接收选择器
+            })
+
+            // appendTo（追加到）
+            $("#appendTo").click(function(){
+                $img.appendTo("#box"); // 可以接受一个选择器（目标对象）
+                $img.appendTo($("#box"));// 可以接受一个DOM对象
+            })
+
+            // prepend（向前追加）
+            $("#prepend").click(function(){
+                $("#box").prepend("<img src='./pic/7.jpg' alt=''>");
+            })
+
+            // prependTo（向前追加到）
+            $("#prependTo").click(function(){
+                $("<img src='./pic/7.jpg' alt=''>").prependTo("#box");
+            })
+
+            // before（外部前追加）
+            $("#before").click(function(){
+                $("#box").before("<img src='./pic/7.jpg'>");
+            })
+
+            // insertBefore（外部前追加至）
+            $("#insertBefore").click(function(){
+                $img.insertBefore("#box");
+            })
+
+            // after（外部后追加）
+            $("#after").click(function(){
+                $("#box").after("<img src='./pic/3.jpg'>");
+            })
+
+            // insertAfter（外部后追加至）
+            $("#insertAfter").click(function(){
+                $("<img src='./pic/3.jpg'>").insertAfter("#box");
+            })
+        })
+    </script>
+</fotter>
+</html>
