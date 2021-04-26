@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-DOM的操作</title>
+    <style>
+        #box {
+            width: 800px;
+            font-size: 0px;
+            border: 2px solid orange;
+        }
+
+        #box img {
+            width: 200px;
+            height: 200px;
+            border: none;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 396px;
+            height: 396px;
+            border: 2px solid rgb(48, 155, 98);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>jQuery-DOM的替换</h1>
+    <!-- <img src="./pic/6.jpg" alt="" id="pic1"> -->
+    <hr>
+    <div id="box">
+        <img src="./pic/1.jpg" alt="">
+        <img id="pic2" src="./pic/2.jpg" alt="">
+        <img src="./pic/3.jpg" alt="">
+        <img id="pic4" src="./pic/4.jpg" alt="">
+    </div>
+    <hr>
+    <button id="replaceWith1">replaceWith1</button>
+    <button id="replaceWith2">replaceWith2</button>
+    <button id="replaceAll">replaceAll</button>
+</body>
+<fotter>
+    <script src='./jQuery/jquery-3.6.0.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            // 将匹配到的元素替换成新元素
+            $("#replaceWith1").click(function(){
+                $("#pic4").replaceWith("<img src='./pic/5.jpg'>");
+            })
+
+            // 将匹配到的元素换成其他已有元素
+            $("#replaceWith2").click(function(){
+                $("#pic4").replaceWith($("#pic2"));
+            })
+
+            // 新（已有）元素替换匹配到的元素
+            $("#replaceAll").click(function(){
+                $("<img src='./pic/5.jpg'>").replaceAll("#pic4");
+                $("#pic2").replaceAll("#pic4");
+            })
+        })
+    </script>
+</fotter>
+</html>

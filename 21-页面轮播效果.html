@@ -9,6 +9,8 @@
         #itemBox {
             margin: 100px auto;
             width: 800px;
+            height: 420px; /*4个item的全高*/
+            overflow: hidden; /*溢出的部分隐藏*/
         }
 
         .item {
@@ -51,14 +53,52 @@
                 <p>Lorem ipsum dolor sit.</p>
             </div>
         </div>
+        <div class="item">
+            <img src="./pic/3.jpg" alt="">
+            <div class="item-content">
+                <h3>Hello Lusi</h3>
+                <p>Lorem ipsum dolor sit.</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./pic/4.jpg" alt="">
+            <div class="item-content">
+                <h3>Hello Lusi</h3>
+                <p>Lorem ipsum dolor sit.</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./pic/5.jpg" alt="">
+            <div class="item-content">
+                <h3>Hello Lusi</h3>
+                <p>Lorem ipsum dolor sit.</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./pic/6.jpg" alt="">
+            <div class="item-content">
+                <h3>Hello Lusi</h3>
+                <p>Lorem ipsum dolor sit.</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="./pic/7.jpg" alt="">
+            <div class="item-content">
+                <h3>Hello Lusi</h3>
+                <p>Lorem ipsum dolor sit.</p>
+            </div>
+        </div>
     </div>
 </body>
 <footer>
     <script src='./jQuery/jquery-3.6.0.js'></script>
     <script type='text/javascript'>
-        // $(document).ready(funtion(){
-            
-        // })
+        $(document).ready(function(){
+            setInterval(function(){
+                // 隐藏之后，插入到最前方，再显示
+                $(".item").last().hide().prependTo("#itemBox").slideDown();
+            }, 3000);
+        })
     </script>
 </footer>
 </html>

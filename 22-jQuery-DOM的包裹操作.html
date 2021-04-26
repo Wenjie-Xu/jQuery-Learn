@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-DOM的操作</title>
+    <style>
+        #box {
+            width: 800px;
+            font-size: 0px;
+            border: 2px solid orange;
+        }
+
+        #box img {
+            width: 200px;
+            height: 200px;
+            border: none;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 396px;
+            height: 396px;
+            border: 2px solid rgb(48, 155, 98);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>jQuery-DOM的包裹</h1>
+    <!-- <img src="./pic/6.jpg" alt="" id="pic1"> -->
+    <hr>
+    <div id="box">
+        <img src="./pic/1.jpg" alt="">
+        <img src="./pic/2.jpg" alt="">
+        <img src="./pic/3.jpg" alt="">
+        <img src="./pic/4.jpg" alt="">
+    </div>
+    <hr>
+    <button id="wrapBtn">wrap</button>
+    <button id="wrapAllBtn">wrapAll</button>
+    <button id="wrapInner">wrapInner</button>
+    <button id="unwrap">unwrap</button>
+</body>
+<fotter>
+    <script src='./jQuery/jquery-3.6.0.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            // 包裹（每一个）
+            $("#wrapBtn").click(function(){
+                $("#box img").wrap("<li>");
+            })
+            // 包裹（包裹一个）
+            $("#wrapAllBtn").click(function(){
+                $("#box img").wrapAll("<li>");
+            })
+            // 整体包裹内部
+            $("#wrapInner").click(function(){
+                $("#box").wrapInner("<li>");
+            })
+            // 去掉包裹
+            $("#unwrap").click(function(){
+                $("#box img").unwrap();
+            })
+        })
+    </script>
+</fotter>
+</html>

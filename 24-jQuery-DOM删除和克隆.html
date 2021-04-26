@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery-DOM的操作</title>
+    <style>
+        .active {
+            border: 2px solid red;
+        }
+
+        #box {
+            /* width: 804px; */
+            font-size: 0px;
+            border: 2px solid orange;
+        }
+
+        #box img {
+            width: 200px;
+            height: 200px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>jQuery-DOM的删除</h1>
+    <!-- <img src="./pic/6.jpg" alt="" id="pic1"> -->
+    <hr>
+    <div id="box">
+        <img src="./pic/1.jpg" alt="">
+        <img id="pic2" src="./pic/2.jpg" alt="">
+        <img src="./pic/3.jpg" alt="">
+        <img id="pic4" src="./pic/4.jpg" alt="">
+    </div>
+    <hr>
+    <button id="emptyBtn">empty</button>
+    <button id="removeBtn">remove</button>
+    <button id="detachBtn">detach</button>
+    <button id="backBtn">detachBack</button>
+    <button id="cloneBtn">clone</button>
+</body>
+<fotter>
+    <script src='./jQuery/jquery-3.6.0.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            var removeEle = null;
+
+            // 图片选中
+            $("#box img").click(
+                function(){
+                    $(this)
+                    .toggleClass("active")
+                    .siblings("img")
+                    .removeClass("active");
+                })
+
+            // 清空内部内容
+            $("#emptyBtn").click(function(){
+                $("#pic4").empty();
+            })
+
+            // 删除自身，可恢复
+            $("#removeBtn").click(function(){
+                removeEle = $(".active").remove();
+            })
+
+            //和删除类似，可恢复（绑定事件仍然有效）
+            $("#detachBtn").click(function(){
+                removeEle = $(".active").detach();
+            })
+
+            // 恢复
+            $("#backBtn").click(function(){
+                $("#box").append(removeEle);
+            })
+
+            // 克隆
+            $("#cloneBtn").click(
+                function(){
+                    var newEle = $(".active").clone();
+                    $("#box").append(newEle);
+                })
+        })
+    </script>
+</fotter>
+</html>
