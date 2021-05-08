@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery的事件绑定</title>
+</head>
+<body>
+    <h1>jQuery的事件绑定</h1>
+    <hr>
+
+    <div>
+        <button>hello</button>
+        <button>你好</button>
+    </div>
+    <div>
+        <div class="mouseover">mouseover&out</div>
+        <div class="mousedown">mousedown&up</div>
+        <div class="mouseenter">mouseenter&leave</div>
+    </div>
+</body>
+<fotter>
+    <script src='./jQuery/jquery-3.6.0.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            // 通过时间名称的方法来进行绑定
+            $("button:contains('hello')").click(function(){
+                window.alert("hello");
+            })
+
+            // 通用的on方法+事件名称绑定
+            $("button:contains('你好')").on("click",function(){
+                window.alert("你好");
+            })
+            
+            // 当鼠标指针位于元素上方时，会发生mouseover事件
+            $(".mouseover").mouseover(function(){
+                $(this).css("background-color","#ccc");
+            })
+            
+            // 当鼠标指针从元素上移开时，发生mouseout事件
+            $(".mouseover").mouseout(function(){
+                $(this).css("background-color","#fff");
+            })
+
+            // 当鼠标指针移动到元素上方，并按下鼠标按键时，会发生mousedown事件
+            $(".mousedown").mousedown(function(){
+                $(this).css("background-color","#ccc")
+            })
+
+            // 当在元素上放松鼠标按钮时，会发生mouseup事件
+            $(".mousedown").mouseup(function(){
+                $(this).css("background-color","#fff")
+            })
+
+            // 当鼠标指针穿过元素时，会发生mouseenter事件
+            $(".mouseenter").mouseenter(function () {
+                $(this).css("background-color", "#ccc");
+            });
+
+            // 当鼠标指针离开元素时，会发生mouseleave事件
+            $(".mouseenter").mouseleave(function () {
+                $(this).css("background-color", "#fff");
+            });
+        })
+    </script>
+</fotter>
+</html>
