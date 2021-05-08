@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡案例</title>
+    <style>
+        body {
+            font: 16px "Microsoft YaHei", sans-serif
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+        .container  {
+            margin: 100px auto;
+            width: 800px;
+
+        }
+        .option-list {
+            height: 40px;
+            border-bottom: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+        }
+
+        .option-list li {
+            float: left;
+            line-height: 40px;
+            height: 39px;
+            padding: 0px 20px;
+            border-right: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            background-color: #f5f5f5;
+            cursor: pointer;
+        }
+
+        .card-list li {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            height: 300px;
+            border-top: none;
+        }
+        .option-list li.current {
+            background-color: white;
+            height: 40px;
+        }
+
+        .card-list li.current {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="option-list">
+            <ul>
+                <li class="current">未付款订单</li>
+                <li>未发货订单</li>
+                <li>未收货订单</li>
+                <li>已完成订单</li>
+                <li>失效订单</li>
+            </ul>
+        </div>
+        <div class="card-list">
+            <ul>
+                <li class="current">这是还没有付款的订单</li>
+                <li>这是还没有发货的订单</li>
+                <li>这是还没有收货的订单</li>
+                <li>这是已完成的订单</li>
+                <li>这是失效的订单</li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="./jQuery/jquery-3.6.0.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".option-list li").click(function(){
+            $(this).siblings("li").removeClass("current");
+            $(this).addClass("current");
+
+            $(".card-list li").hide().eq($(this).index()).slideDown();
+        })
+    })
+</script>
+</html>
