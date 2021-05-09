@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件触发</title>
+    <style>
+        button {
+            width: 150px;
+            line-height: 40px;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            width: 300px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">事件按钮</button>
+    <button id="btn1">触发按钮</button>
+    <button id="btn2">触发input的focus事件</button>
+    <hr>
+    <div>
+        <input type="text" id="myinput">
+    </div>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                alert("我被单击了");
+            })
+            $("#btn").mouseover(function(){
+                $(this).css("background-color", "#999");
+            })
+
+            /*
+                trigger返回的是jqueryDOM，支持连贯操作
+                trigger可以触发元素自带的事件，triggerHander不可以（比如input的focus方法）
+                trigger会触发集合中所有元素的事件，而triggerHander只触发集合中第一个元素的事件
+            */
+            $("#btn1").click(function(){
+                $("#btn").trigger("click");
+                $("#btn").trigger("mouseover");
+            })
+
+            $("#btn2").click(function(){
+                $("#myinput").trigger("focus");
+            })
+        })
+    </script>
+</body>
+</html>

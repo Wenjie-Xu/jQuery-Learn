@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象</title>
+    <style>
+        a {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            text-align: center;
+            text-decoration: none;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>事件对象</h1>
+    <hr>
+    <a href="#">按钮</a:>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).click(function(event){
+                console.log("鼠标位置"+event.pageX+":"+event.pageY);
+                console.log("触发该事件的元素是："+event.target);
+            })
+            $(document).keypress(function(event){
+                console.log(event.which);
+                console.log(event.type);
+            })
+
+            // 阻止事件
+            $("a").click(function(event){
+                $(document.body).css("background-color", "yellow");
+
+                // 阻止默认动作
+                event.preventDefault();
+                // 阻止事件冒泡（少用）
+                event.stopPropagation();
+                // 既可以阻止默认事件、也可以阻止事件冒泡
+                return false;
+            })
+        })
+    </script>
+</footer>
+</html>

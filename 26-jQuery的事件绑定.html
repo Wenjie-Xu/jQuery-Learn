@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery的事件绑定</title>
+    <style>
+        #box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #999;
+        }
+    </style>
 </head>
 <body>
     <h1>jQuery的事件绑定</h1>
@@ -13,12 +20,16 @@
     <div>
         <button>hello</button>
         <button>你好</button>
+        <button>一次双击事件绑定</button>
+        <button id="btn">解除事件</button>
     </div>
     <div>
         <div class="mouseover">mouseover&out</div>
         <div class="mousedown">mousedown&up</div>
         <div class="mouseenter">mouseenter&leave</div>
     </div>
+
+    <div id="box"></div>
 </body>
 <fotter>
     <script src='./jQuery/jquery-3.6.0.js'></script>
@@ -34,6 +45,27 @@
                 window.alert("你好");
             })
             
+            // 把事件仅仅绑定一次
+            $("button:contains('一次双击事件绑定')").one("dblclick",function(){
+                window.alert("一次双击事件绑定");
+            })
+
+            // 使用on同时绑定多个事件(参数可以是一个对象，css同样也支持)
+            $("#box").on({
+                "mouseover":function(){
+                    $("#box").css({"background":"#ccc","border":"1px dashed blue"})
+                },
+                "mouseout":function(){// transparent:恢复默认值
+                    $("#box").css({"background":"white","border":"transparent"})
+                }
+            })
+
+            // 解除事件
+            $("#btn").click(function(){
+                // 可以解除全部，也可以填写参数解除指定的事件
+                $("#box").off("mouseout");
+            })
+
             // 当鼠标指针位于元素上方时，会发生mouseover事件
             $(".mouseover").mouseover(function(){
                 $(this).css("background-color","#ccc");

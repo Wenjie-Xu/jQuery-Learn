@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件委派</title>
+    <style>
+      ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+      }
+
+      #myList {
+        width: 600px;
+      }
+
+      #myList li {
+        padding: 20px;
+        margin-bottom: 10px;
+        border: 2px solid #ccc;
+      }
+
+      #myList li.current {
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="myList">
+      <li>Lorem, ipsum dolor.</li>
+      <li>Lorem, ipsum dolor.</li>
+      <li>Lorem, ipsum dolor.</li>
+      <li>Lorem, ipsum dolor.</li>
+      <li>Lorem, ipsum dolor.</li>
+    </ul>
+    <input type="text" id="liContent" />
+    <button id="btn">添加li</button>
+  </body>
+  <script src="./jQuery/jquery-3.6.0.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        // 使用on方法进行事件的委派，将事件绑定给父元素，传递给子元素
+        $("#myList").on("click", "li", function () {
+        $(this).toggleClass("current");
+        });
+
+        $("#btn").click(function () {
+        $("<li>").text($("#liContent").val()).appendTo("#myList");
+        });
+
+    });
+  </script>
+</html>

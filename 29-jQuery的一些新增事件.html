@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery事件</title>
+    <style>
+        .input-group {
+            border: 1px solid #ccc;
+            width: 600px;
+            padding: 20px;
+        }
+
+        .input-group input {
+            border: 1px solid #ccc;
+            width: 300px;
+            height: 30px;
+        }
+
+        .detail-box {
+            width: 600px;
+        }
+
+        .detail-header {
+            padding: 20px;
+            background-color: skyblue;
+        }
+
+        .detail-header h3{
+            margin: 0;
+        }
+
+        .detail-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>jQuery事件</h1>
+    <hr>
+
+    <div class="input-group">
+        <input type="text">
+    </div>
+    <hr>
+    <div class="detail-box">
+        <div class="detail-header" id="h1">
+            <h3>详细内容</h3>
+        </div>
+        <div class="detail-content" id="content1">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+            Inventore id commodi est recusandae veniam minima corrupti
+        </div>
+
+        <div class="detail-header" id="h2">
+            <h3>horver效果切换</h3>
+        </div>
+        <div class="detail-content" id="content2">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
+            Inventore id commodi est recusandae veniam minima corrupti
+        </div>
+    </div>
+</body>
+<footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // focusin\focusout
+            // 绑定包含input元素的父元素上，那么input的fouse事件被触发后调用
+            $(".input-group")
+            .focusin(function(){
+                $(this).css("background-color", "yellow");
+            })
+            .focusout(function(){
+                $(this).css("background-color","transparent");
+            })
+
+            //mouseenter\mouseleave
+            $("#h1")
+            .mouseenter(function(){
+                $("#content1").slideDown();
+            })
+            .mouseleave(function(){
+                $("#content1").slideUp();
+            })
+
+            //mouseenter\mouseleave组合进行效果切换，可以通过horver来替换
+            //horver每触发一次，改变一次
+            $("#h2")
+            .hover(function(){
+                $("#content2").slideToggle();// 显示与隐藏，每触发一次，改变一次
+            })
+
+        })
+    </script>
+</footer>
+</html>
