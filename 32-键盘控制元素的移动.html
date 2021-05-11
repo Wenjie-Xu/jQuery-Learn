@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>键盘控制元素移动</title>
+    <style>
+      #box {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 40px;
+        height: 40px;
+        background-color: yellow;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+  </body>
+  <footer>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        // 计算页面的宽高
+        var pageWidth = $(window).width();
+        var pageHeight = $(window).height();
+
+        /*w:87 - a:65 - s:83 - d:68*/
+        // 绑定键盘事件
+        $(document).keydown(function (event) {
+          var left = $("#box").offset().left;
+          var top = $("#box").offset().top;
+          switch (event.which) {
+            case 87:
+              $("#box").offset({
+                top: Math.max(top - 20, 0),
+              });
+              break;
+            case 65:
+              $("#box").offset({
+                left: Math.max(left - 20, 0),
+              });
+              break;
+            case 83:
+              $("#box").offset({
+                top: Math.min(top + 20, pageHeight - 40),
+              });
+              break;
+            case 68:
+              $("#box").offset({
+                left: Math.min(left + 20, pageWidth - 40),
+              });
+              break;
+          }
+        });
+      });
+    </script>
+  </footer>
+</html>
