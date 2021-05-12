@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标拖拽效果</title>
+    <style>
+        #box {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            background-color: yellow;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<fotter>
+    <script src='./jQuery/jquery-3.6.0.js'></script>
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $("#box").mousedown(function(){
+                $(this).css("opacity",".6");
+
+                var posx = event.pageX - $(this).offset().left;
+                var posy = event.pageY - $(this).offset().top;
+
+                $(this).mousemove(function(event){
+                    var x = event.pageX;
+                    var y = event.pageY;
+                    $(this).offset({
+                        left: x - posx,
+                        top: y - posy
+                    })
+                });
+            }).mouseup(function(){
+                $(this).css("opacity","1");
+                $(this).off("mousemove");
+            })
+
+
+        })
+    </script>
+</fotter>
+</html>
