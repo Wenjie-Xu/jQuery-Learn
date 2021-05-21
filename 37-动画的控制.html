@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery动画</title>
+    <style>
+      #box {
+        width: 400px;
+        height: 300px;
+        overflow: hidden;
+      }
+
+      #box img {
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>动画的控制</h1>
+    <hr />
+    <button id="btn">隐藏</button>
+    <button id="btn1">显示</button>
+    <button id="btn2">暂停</button>
+    <button id="btn3">完成动画</button>
+    <button id="btn4">切换动画延迟</button>
+    <div id="box">
+      <img src="./pic/3.jpg" alt="" />
+    </div>
+  </body>
+  <fotter>
+    <script src="./jQuery/jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $("#btn").click(function(){
+            $("#box").slideUp(3000);
+        })
+
+        $("#btn1").click(function(){
+            $("#box").slideDown(3000);
+        })
+
+        // 相当于可以暂停动画
+        $("#btn2").click(function(){
+            $("#box").stop();
+        })
+
+        // 让动画效果瞬间结束
+        $("#btn3").click(function(){
+            $("#box").finish();
+        })
+
+        // 在动画的切换间进行延迟操作
+        $("#btn4").click(function(){
+            $("#box").hide(2000).delay(1000).show(1000);
+        })
+      })
+    </script>
+  </fotter>
+</html>
