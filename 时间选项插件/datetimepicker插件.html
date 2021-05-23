@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>datetimerpicker插件</title>
+    <link rel="stylesheet" href="./datetimepicker/jquery.datetimepicker.min.css">
+</head>
+<body>
+    <input type="text" id="datetime">
+    <input type="text" id="dateInput">
+    <button id="btn">获取时间</button>
+    <script src="../jQuery/jquery-3.6.0.js"></script>    
+    <script src="./datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // 设置插件的语言
+            $.datetimepicker.setLocale("zh");
+            
+            $("#datetime").datetimepicker({
+                format: "Y-m-d H:m:s"
+            });
+            // 只允许有日期的插件
+            $("#dateInput").datetimepicker({
+                timepicker: false,
+                format: "Y-m-d"
+            });
+
+            $("#btn").click(function(){
+                console.log($("#datetime").val());
+            })
+        });
+    </script>
+</body>
+</html>
